@@ -1,6 +1,9 @@
 import { BiCheck } from 'react-icons/bi'
 
-const Dropdown = () => {
+const Dropdown = ({ toggle }) => {
+	if (!toggle) {
+		return null
+	}
 	return (
 		<div
 			className='origin-top-right absolute right-0 mt-2 w-56

@@ -1,7 +1,9 @@
 import { BiSearch, BiCaretDown } from 'react-icons/bi'
 import Dropdown from './Dropdown'
+import { useState } from 'react'
 
 const Search = () => {
+	const [toggleDropdown, setToggleDropdown] = useState(false)
 	return (
 		<div className='py-5'>
 			<div className='mt-1 relative rounded-md shadow-sm'>
@@ -25,10 +27,11 @@ const Search = () => {
 							id='options-menu'
 							aria-haspopup='true'
 							aria-expanded='true'
+							onClick={() => setToggleDropdown(!toggleDropdown)}
 						>
 							Sort By <BiCaretDown className='ml-2' />
 						</button>
-						<Dropdown />
+						<Dropdown toggle={toggleDropdown} />
 					</div>
 				</div>
 			</div>
