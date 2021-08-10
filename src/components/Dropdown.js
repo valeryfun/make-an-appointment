@@ -1,6 +1,6 @@
 import { BiCheck } from 'react-icons/bi'
 
-const Dropdown = ({ toggle }) => {
+const Dropdown = ({ toggle, onSortChange, onOrderChange, sortBy, orderBy }) => {
 	if (!toggle) {
 		return null
 	}
@@ -18,32 +18,37 @@ const Dropdown = ({ toggle }) => {
 				<div
 					className='px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer'
 					role='menuitem'
+					onClick={() => onSortChange('petName')}
 				>
-					Pet Name <BiCheck />
+					Pet Name {sortBy === 'petName' && <BiCheck />}
 				</div>
 				<div
 					className='px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer'
 					role='menuitem'
+					onClick={() => onSortChange('ownerName')}
 				>
-					Owner Name <BiCheck />
+					Owner Name {sortBy === 'ownerName' && <BiCheck />}
 				</div>
-				<div
+				{/* <div
 					className='px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer'
 					role='menuitem'
+					onClick={() => onSortChange('Date')}
 				>
-					Date <BiCheck />
-				</div>
+					Date {sortBy === 'aptDate' && <BiCheck />}
+				</div> */}
 				<div
 					className='px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer border-gray-1 border-t-2'
 					role='menuitem'
+					onClick={() => onOrderChange('asc')}
 				>
-					Asc <BiCheck />
+					Asc {orderBy === 'asc' && <BiCheck />}
 				</div>
 				<div
 					className='px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer'
 					role='menuitem'
+					onClick={() => onOrderChange('desc')}
 				>
-					Desc <BiCheck />
+					Desc {orderBy === 'desc' && <BiCheck />}
 				</div>
 			</div>
 		</div>
