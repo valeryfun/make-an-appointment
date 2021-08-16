@@ -4,7 +4,7 @@ import AppointmentInfo from './components/AppointmentInfo'
 import Search from './components/Search'
 import { useState, useEffect, useCallback } from 'react'
 
-function App() {
+function App({ myAppointment, item }) {
 	const [appointmentList, setAppointmentList] = useState([])
 	const [query, setQuery] = useState('')
 	const [sortBy, setSortBy] = useState('ownerName')
@@ -43,7 +43,15 @@ function App() {
 				<BiArchive className='inline-block text-red-400 align-top' /> Your
 				Appointments
 			</h1>
-			<AddAppointment />
+			<AddAppointment
+				sendAppointment={myAppointment =>
+					setAppointmentList([...appointmentList, myAppointment])
+				}
+				lastId={appointmentList.reduce(
+					(max, item) => (Number(item.id) > max ? Number(item.id) : max),
+					0
+				)}
+			/>
 			<Search
 				query={query}
 				onQueryChange={searchQuery => setQuery(searchQuery)}
